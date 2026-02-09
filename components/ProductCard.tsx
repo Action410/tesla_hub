@@ -14,10 +14,10 @@ const getProviderInfo = (name: string) => {
     return { color: 'bg-yellow-500', textColor: 'text-yellow-600', label: 'MTN' }
   }
   if (name.toLowerCase().includes('telecel')) {
-    return { color: 'bg-blue-500', textColor: 'text-blue-600', label: 'Telecel' }
+    return { color: 'bg-red-500', textColor: 'text-red-600', label: 'Telecel' }
   }
   if (name.toLowerCase().includes('airteltigo')) {
-    return { color: 'bg-red-500', textColor: 'text-red-600', label: 'AirtelTigo' }
+    return { color: 'bg-blue-500', textColor: 'text-blue-600', label: 'AirtelTigo' }
   }
   if (name.toLowerCase().includes('afa')) {
     return { color: 'bg-green-500', textColor: 'text-green-600', label: 'AFA Bundle' }

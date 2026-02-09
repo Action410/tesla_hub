@@ -203,19 +203,90 @@ export default function Home() {
           </h3>
           <p className="text-lg text-gray-700 mb-4">QUALITY PRODUCTS • 24/7 SERVICE • DIRECT TO YOUR DOOR</p>
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
-        </div>
+
+        {/* MTN Data Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-full h-1 bg-gradient-to-r from-yellow-500 to-transparent"></div>
+            <h3 className="text-2xl md:text-3xl font-bold text-yellow-600 whitespace-nowrap">MTN Data</h3>
+            <div className="w-full h-1 bg-gradient-to-l from-yellow-500 to-transparent"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {products.filter(p => p.name.toLowerCase().includes('mtn')).map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Telecel Data Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-full h-1 bg-gradient-to-r from-red-500 to-transparent"></div>
+            <h3 className="text-2xl md:text-3xl font-bold text-red-600 whitespace-nowrap">Telecel Data</h3>
+            <div className="w-full h-1 bg-gradient-to-l from-red-500 to-transparent"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {products.filter(p => p.name.toLowerCase().includes('telecel')).map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* AirtelTigo Data Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-full h-1 bg-gradient-to-r from-blue-500 to-transparent"></div>
+            <h3 className="text-2xl md:text-3xl font-bold text-blue-600 whitespace-nowrap">AirtelTigo Data</h3>
+            <div className="w-full h-1 bg-gradient-to-l from-blue-500 to-transparent"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {products.filter(p => p.name.toLowerCase().includes('airteltigo')).map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
