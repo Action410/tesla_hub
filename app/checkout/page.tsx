@@ -3,8 +3,7 @@
 import { useCart } from '@/context/CartContext'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { usePaystackPayment } from 'react-paystack'
+import { useEffect, useState } from 'react'
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart()
@@ -18,10 +17,42 @@ export default function CheckoutPage() {
     city: '',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isPaystackReady, setIsPaystackReady] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
 
   // TODO: Replace with your Paystack public key
   // Get your public key from: https://dashboard.paystack.com/#/settings/developer
+  // Example: const PAYSTACK_PUBLIC_KEY = 'pk_live_xxxxxxxxxxxxxxxxxxxxx';
   const PAYSTACK_PUBLIC_KEY = 'YOUR_PAYSTACK_PUBLIC_KEY'
+
+  // Load Paystack Inline script on the client only
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const scriptUrl = 'https://js.paystack.co/v1/inline.js'
+    const existingScript = document.querySelector(
+      `script[src="${scriptUrl}"]`
+    ) as HTMLScriptElement | null
+
+    if (existingScript) {
+      if ((window as any).PaystackPop) {
+        setIsPaystackReady(true)
+      } else {
+        existingScript.addEventListener('load', () => setIsPaystackReady(true))
+      }
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = scriptUrl
+    script.async = true
+    script.onload = () => setIsPaystackReady(true)
+    script.onerror = () => {
+      console.error('Failed to load Paystack script')
+      setIsPaystackReady(false)
+    }
+    document.body.appendChild(script)
+  }, [])
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -36,68 +67,86 @@ export default function CheckoutPage() {
     return Object.keys(newErrors).length === 0
   }
 
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: formData.email,
-    amount: getTotalPrice() * 100, // Paystack expects amount in kobo (smallest currency unit)
-    publicKey: PAYSTACK_PUBLIC_KEY,
-    currency: 'GHS', // Ghana Cedis
-    metadata: {
-      custom_fields: [
-        {
-          display_name: 'First Name',
-          variable_name: 'first_name',
-          value: formData.firstName,
-        },
-        {
-          display_name: 'Last Name',
-          variable_name: 'last_name',
-          value: formData.lastName,
-        },
-        {
-          display_name: 'Phone',
-          variable_name: 'phone',
-          value: formData.phone,
-        },
-        {
-          display_name: 'Address',
-          variable_name: 'address',
-          value: formData.address,
-        },
-        {
-          display_name: 'City',
-          variable_name: 'city',
-          value: formData.city,
-        },
-      ],
-    },
-  }
+  // Paystack inline payment handler
+  const payWithPaystack = () => {
+    if (typeof window === 'undefined') return
 
-  const initializePayment = usePaystackPayment(config)
+    if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
+      alert(
+        'Please configure your Paystack public key in app/checkout/page.tsx before accepting live payments.'
+      )
+      return
+    }
 
-  const onSuccess = (reference: any) => {
-    // Clear cart after successful payment
-    clearCart()
-    // Redirect to success page
-    router.push(`/success?reference=${reference.reference}`)
-  }
+    if (!(window as any).PaystackPop) {
+      alert('Payment system is still loading. Please wait a moment.')
+      return
+    }
 
-  const onClose = () => {
-    // Handle payment modal close
-    console.log('Payment modal closed')
+    const amountInKobo = Math.round(getTotalPrice() * 100) // Paystack expects amount in the smallest currency unit
+
+    const handler = (window as any).PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email: formData.email,
+      amount: amountInKobo,
+      currency: 'GHS', // Ghana Cedis
+      ref: new Date().getTime().toString(),
+      metadata: {
+        custom_fields: [
+          {
+            display_name: 'First Name',
+            variable_name: 'first_name',
+            value: formData.firstName,
+          },
+          {
+            display_name: 'Last Name',
+            variable_name: 'last_name',
+            value: formData.lastName,
+          },
+          {
+            display_name: 'Phone',
+            variable_name: 'phone',
+            value: formData.phone,
+          },
+          {
+            display_name: 'Address',
+            variable_name: 'address',
+            value: formData.address,
+          },
+          {
+            display_name: 'City',
+            variable_name: 'city',
+            value: formData.city,
+          },
+        ],
+      },
+      callback: (response: { reference: string }) => {
+        setIsProcessing(false)
+        // Clear cart after successful payment
+        clearCart()
+        // Redirect to success page with reference
+        router.push(`/success?reference=${response.reference}`)
+      },
+      onClose: () => {
+        setIsProcessing(false)
+        console.log('Payment modal closed')
+      },
+    })
+
+    handler.openIframe()
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateForm()) {
-      if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
-        alert(
-          'Please configure your Paystack public key in app/checkout/page.tsx'
-        )
-        return
-      }
-      initializePayment({ onSuccess, onClose })
+    if (!validateForm()) return
+
+    if (!isPaystackReady) {
+      alert('Payment system is still loading. Please wait a moment.')
+      return
     }
+
+    setIsProcessing(true)
+    payWithPaystack()
   }
 
   if (cart.length === 0) {
