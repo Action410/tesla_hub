@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
 import { useTheme } from '@/context/ThemeContext'
+import { useAfa } from '@/context/AfaContext'
 import Logo from './Logo'
 import { motion } from 'framer-motion'
 
@@ -17,6 +18,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter()
   const { getTotalItems } = useCart()
   const { theme, toggleTheme } = useTheme()
+  const { isAfaRegistered, isLoading: afaLoading } = useAfa()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [profileMenuOpen, setProfileMenuOpen] = useState(false)
 
@@ -25,6 +27,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: 'Orders', href: '/dashboard/orders', icon: '📦', badge: null },
     { name: 'Store', href: '/', icon: '🛍️' },
     { name: 'Cart', href: '/cart', icon: '🛒', badge: getTotalItems() },
+    { name: 'AFA Registration', href: '/dashboard/afa', icon: '📱' },
     { name: 'Transactions', href: '/dashboard/transactions', icon: '💳' },
     { name: 'Agent', href: '/dashboard/agent', icon: '👤' },
     { name: 'Settings', href: '/dashboard/settings', icon: '⚙️' },
@@ -117,8 +120,26 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               </svg>
             </button>
 
-            {/* Right side - Theme toggle and Profile */}
+            {/* Right side - AFA badge, Theme toggle, Profile */}
             <div className="flex items-center space-x-4 ml-auto">
+              {/* AFA Status Badge */}
+              {!afaLoading && (
+                <Link
+                  href="/dashboard/afa"
+                  className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"
+                  title={isAfaRegistered ? 'AFA Active - You can purchase AFA bundles' : 'Register for AFA to buy AFA bundles'}
+                >
+                  {isAfaRegistered ? (
+                    <span className="bg-green-500 text-white px-3 py-1 rounded-full">
+                      AFA Active
+                    </span>
+                  ) : (
+                    <span className="bg-gray-400 dark:bg-gray-600 text-white px-3 py-1 rounded-full">
+                      AFA Not Active
+                    </span>
+                  )}
+                </Link>
+              )}
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}

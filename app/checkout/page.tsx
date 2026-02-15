@@ -1,6 +1,7 @@
 'use client'
 
 import { useCart } from '@/context/CartContext'
+import { useAfa } from '@/context/AfaContext'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -14,8 +15,18 @@ const STORE_EMAIL = process.env.NEXT_PUBLIC_STORE_EMAIL || 'receipt@geniusdatahu
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart()
+  const { isAfaRegistered, isLoading: afaLoading } = useAfa()
   const router = useRouter()
   const [recipientNumber, setRecipientNumber] = useState('')
+
+  const hasAfaItems = cart.some((item) => item.network?.toUpperCase() === 'AFA')
+
+  useEffect(() => {
+    if (afaLoading) return
+    if (hasAfaItems && !isAfaRegistered) {
+      router.replace('/dashboard/afa')
+    }
+  }, [hasAfaItems, isAfaRegistered, afaLoading, router])
   const [recipientError, setRecipientError] = useState('')
   const [isPaystackReady, setIsPaystackReady] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -142,6 +153,17 @@ export default function CheckoutPage() {
               Continue Shopping
             </a>
           </motion.div>
+        </div>
+      </div>
+    )
+  }
+
+  if (hasAfaItems && !isAfaRegistered && !afaLoading) {
+    return (
+      <div className="min-h-screen bg-white py-12 md:py-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-genius-red mx-auto mb-4" />
+          <p className="text-gray-600">Redirecting to AFA registration...</p>
         </div>
       </div>
     )

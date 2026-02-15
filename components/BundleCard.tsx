@@ -1,7 +1,9 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
 import { usePurchaseFlow } from '@/context/PurchaseFlowContext'
+import { useAfa } from '@/context/AfaContext'
 import type { Product } from '@/context/CartContext'
 import { motion } from 'framer-motion'
 
@@ -28,9 +30,13 @@ function formatSize(sizeMB?: number): string {
 }
 
 export default function BundleCard({ bundle }: BundleCardProps) {
+  const router = useRouter()
   const { addToCart } = useCart()
   const { openPurchaseFlow } = usePurchaseFlow()
+  const { isAfaRegistered } = useAfa()
   const isAfa = bundle.network.toUpperCase() === 'AFA'
+  const requireAfaRedirect = isAfa && !isAfaRegistered
+
   const product: Product = {
     id: bundle.id,
     name: bundle.title,
@@ -42,6 +48,15 @@ export default function BundleCard({ bundle }: BundleCardProps) {
     expires: bundle.expires,
     expiry_note: bundle.expiry_note,
     sizeMB: bundle.sizeMB,
+  }
+
+  const handleBuyOrAdd = (action: 'buy' | 'cart') => {
+    if (requireAfaRedirect) {
+      router.push('/dashboard/afa')
+      return
+    }
+    if (action === 'buy') openPurchaseFlow(bundle)
+    else addToCart(product)
   }
 
   return (
@@ -87,7 +102,7 @@ export default function BundleCard({ bundle }: BundleCardProps) {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => openPurchaseFlow(bundle)}
+              onClick={() => handleBuyOrAdd('buy')}
               className="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-genius-red text-white font-semibold hover:bg-red-700 transition-colors duration-200"
             >
               Buy Now
@@ -95,7 +110,7 @@ export default function BundleCard({ bundle }: BundleCardProps) {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => addToCart(product)}
+              onClick={() => handleBuyOrAdd('cart')}
               className="flex-1 sm:flex-none px-4 py-2 rounded-lg border-2 border-genius-red text-genius-red font-semibold hover:bg-genius-red/5 transition-colors duration-200"
             >
               Add to Cart

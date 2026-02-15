@@ -1,7 +1,9 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { Product } from '@/context/CartContext'
 import { useCart } from '@/context/CartContext'
+import { useAfa } from '@/context/AfaContext'
 import { motion } from 'framer-motion'
 
 interface ProductCardProps {
@@ -26,8 +28,19 @@ const getProviderInfo = (name: string) => {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const router = useRouter()
   const { addToCart } = useCart()
+  const { isAfaRegistered } = useAfa()
+  const isAfa = product.network?.toUpperCase() === 'AFA'
   const providerInfo = getProviderInfo(product.name)
+
+  const handleAddToCart = () => {
+    if (isAfa && !isAfaRegistered) {
+      router.push('/dashboard/afa')
+      return
+    }
+    addToCart(product)
+  }
   
   // Extract data size from name (e.g., "1GB", "2GB", "5GB", "10GB")
   const dataSize = product.name.match(/\d+GB/i)?.[0] || ''
@@ -89,7 +102,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => addToCart(product)}
+            onClick={handleAddToCart}
             className="bg-genius-red text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors duration-200 shadow-md"
           >
             Add to Cart
