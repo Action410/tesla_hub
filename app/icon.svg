@@ -17,14 +17,12 @@
   <!-- 3D Box - Right face -->
   <path d="M 50 45 L 70 35 L 70 60 L 50 70 Z" fill="none" stroke="white" stroke-width="1.5"/>
   
-  <!-- Red Lightning Bolt across front face -->
+  <!-- Brand mark -->
   <path d="M 32 40 L 38 48 L 35 48 L 40 56 L 47 48 L 38 48 Z" fill="#DC143C" stroke="#DC143C" stroke-width="0.8"/>
   
-  <!-- Text: Ts.⚡H -->
-  <text x="50" y="85" text-anchor="middle" fill="white" font-size="11" font-family="Arial, sans-serif" font-weight="bold" letter-spacing="1">
-    <tspan fill="white">Ts.</tspan>
-    <tspan fill="#DC143C">⚡</tspan>
-    <tspan fill="white">H</tspan>
+  <!-- Text: G -->
+  <text x="50" y="85" text-anchor="middle" fill="white" font-size="14" font-family="Arial, sans-serif" font-weight="bold" letter-spacing="1">
+    <tspan fill="white">G</tspan>
   </text>
 </svg>
 

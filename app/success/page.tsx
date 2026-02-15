@@ -80,7 +80,7 @@ function SuccessContent() {
           >
             <Link
               href="/"
-              className="inline-block bg-tesla-red text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
+              className="inline-block bg-genius-red text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
             >
               Continue Shopping
             </Link>
@@ -101,7 +101,7 @@ export default function SuccessPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tesla-red mx-auto mb-4"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-genius-red mx-auto mb-4"></div>
         <p className="text-gray-600">Loading...</p>
       </div>
     </div>}>

@@ -125,8 +125,8 @@ export default function Home() {
       >
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-tesla-red rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-tesla-red rounded-full blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-genius-red rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-genius-red rounded-full blur-3xl"></div>
         </div>
         
         {/* Wave pattern overlay */}
@@ -161,11 +161,11 @@ export default function Home() {
             className="text-5xl md:text-7xl font-bold mb-4"
           >
             <span className="text-white">FAST</span>
-            <span className="text-tesla-red">.</span>
+            <span className="text-genius-red">.</span>
             <span className="text-white"> SECURE</span>
-            <span className="text-tesla-red">.</span>
+            <span className="text-genius-red">.</span>
             <span className="text-white"> DELIVERED</span>
-            <span className="text-tesla-red">.</span>
+            <span className="text-genius-red">.</span>
           </motion.h1>
           <motion.p
             initial={{ y: -20, opacity: 0 }}
@@ -191,7 +191,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.9, type: 'spring' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-tesla-red text-white px-8 py-4 rounded-lg font-bold text-lg md:text-xl hover:bg-red-700 transition-colors duration-200 shadow-lg"
+            className="bg-genius-red text-white px-8 py-4 rounded-lg font-bold text-lg md:text-xl hover:bg-red-700 transition-colors duration-200 shadow-lg"
           >
             ORDER NOW
           </motion.button>
@@ -209,9 +209,9 @@ export default function Home() {
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-black">FAST &</span>{' '}
-            <span className="text-tesla-red">RELIABLE</span>
+            <span className="text-genius-red">RELIABLE</span>
           </h2>
-          <h3 className="text-4xl md:text-6xl font-bold text-tesla-red mb-6">
+          <h3 className="text-4xl md:text-6xl font-bold text-genius-red mb-6">
             DELIVERY
           </h3>
           <p className="text-lg text-gray-700 mb-4">QUALITY PRODUCTS • 24/7 SERVICE • DIRECT TO YOUR DOOR</p>
@@ -306,7 +306,7 @@ export default function Home() {
       <section className="bg-gradient-to-br from-gray-900 via-black to-gray-900 py-16 md:py-20 text-white relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-tesla-red rounded-full blur-3xl"></div>
+          <div className="absolute top-10 right-10 w-64 h-64 bg-genius-red rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 left-10 w-64 h-64 bg-tesla-red rounded-full blur-3xl"></div>
         </div>
         

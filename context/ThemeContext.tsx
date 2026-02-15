@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMounted(true)
     // Load theme from localStorage
-    const savedTheme = localStorage.getItem('tesla-hub-theme') as Theme | null
+    const savedTheme = localStorage.getItem('genius-data-hub-theme') as Theme | null
     if (savedTheme) {
       setThemeState(savedTheme)
     } else {
@@ -38,7 +38,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.remove('dark')
     }
     // Save to localStorage
-    localStorage.setItem('tesla-hub-theme', theme)
+    localStorage.setItem('genius-data-hub-theme', theme)
   }, [theme, mounted])
 
   const toggleTheme = () => {

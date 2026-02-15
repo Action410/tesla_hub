@@ -49,7 +49,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <Link href="/dashboard" className="flex items-center space-x-3">
               <Logo size={40} />
               <span className="text-xl font-bold text-black dark:text-white">
-                Tesla Hub
+                Genius Data Hub
               </span>
             </Link>
           </div>
@@ -64,14 +64,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
                       isActive(item.href)
-                        ? 'bg-tesla-red text-white'
+                        ? 'bg-genius-red text-white'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                   >
                     <span className="text-xl">{item.icon}</span>
                     <span className="font-medium">{item.name}</span>
-                    {item.badge !== null && item.badge > 0 && (
-                      <span className="ml-auto bg-tesla-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {item.badge !== null && item.badge > 0 && (
+                      <span className="ml-auto bg-genius-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                         {item.badge}
                       </span>
                     )}
@@ -125,7 +125,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   onClick={() => setProfileMenuOpen(!profileMenuOpen)}
                   className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="w-8 h-8 bg-tesla-red rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-8 h-8 bg-genius-red rounded-full flex items-center justify-center text-white font-bold">
                     U
                   </div>
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:block">

@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'tesla-red': '#DC143C',
-        'tesla-black': '#000000',
-        'tesla-white': '#FFFFFF',
+        'genius-red': '#DC143C',
+        'genius-black': '#000000',
+        'genius-white': '#FFFFFF',
       },
     },
   },

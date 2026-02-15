@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Tesla Hub - Fast. Secure. Delivered.',
+  title: 'Genius Data Hub - Fast, Secure, Reliable Digital Services',
   description: 'Premium e-commerce platform for quality products',
   icons: {
     icon: '/icon.svg',

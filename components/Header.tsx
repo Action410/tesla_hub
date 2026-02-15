@@ -23,27 +23,27 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               className="text-2xl md:text-3xl font-bold text-white hidden sm:block"
             >
-              Tesla Hub
+              Genius Data Hub
             </motion.h1>
           </Link>
 
           <nav className="flex items-center space-x-4 md:space-x-6">
             <Link
               href="/"
-              className="text-white hover:text-tesla-red transition-colors duration-200"
+              className="text-white hover:text-genius-red transition-colors duration-200"
             >
               Home
             </Link>
             <Link
               href="/cart"
-              className="relative text-white hover:text-tesla-red transition-colors duration-200"
+              className="relative text-white hover:text-genius-red transition-colors duration-200"
             >
               Cart
               {getTotalItems() > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-2 -right-2 bg-tesla-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                  className="absolute -top-2 -right-2 bg-genius-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
                 >
                   {getTotalItems()}
                 </motion.span>

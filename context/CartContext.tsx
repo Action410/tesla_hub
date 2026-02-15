@@ -31,7 +31,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('tesla-hub-cart')
+    const savedCart = localStorage.getItem('genius-data-hub-cart')
     if (savedCart) {
       setCart(JSON.parse(savedCart))
     }
@@ -39,7 +39,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('tesla-hub-cart', JSON.stringify(cart))
+    localStorage.setItem('genius-data-hub-cart', JSON.stringify(cart))
   }, [cart])
 
   const addToCart = (product: Product) => {
@@ -74,7 +74,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = () => {
     setCart([])
-    localStorage.removeItem('tesla-hub-cart')
+    localStorage.removeItem('genius-data-hub-cart')
   }
 
   const getTotalPrice = () => {

@@ -38,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ y: -5 }}
-      className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 hover:border-tesla-red hover:shadow-xl transition-all duration-300"
+      className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 hover:border-genius-red hover:shadow-xl transition-all duration-300"
     >
       {/* Header with provider badge */}
       <div className={`${providerInfo.color} p-4 text-white`}>
@@ -62,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           transition={{ delay: 0.2, type: 'spring' }}
           className="mb-4"
         >
-          <div className="text-5xl md:text-6xl font-bold text-tesla-red mb-2">
+          <div className="text-5xl md:text-6xl font-bold text-genius-red mb-2">
             {dataSize}
           </div>
           <div className="text-sm text-gray-600 font-semibold">DATA BUNDLE</div>
@@ -82,7 +82,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex items-center justify-between pt-4 border-t border-gray-200">
           <div>
             <p className="text-xs text-gray-500 mb-1">Price</p>
-            <p className="text-2xl md:text-3xl font-bold text-tesla-red">
+            <p className="text-2xl md:text-3xl font-bold text-genius-red">
               ₵{product.price.toFixed(2)}
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => addToCart(product)}
-            className="bg-tesla-red text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors duration-200 shadow-md"
+            className="bg-genius-red text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors duration-200 shadow-md"
           >
             Add to Cart
           </motion.button>

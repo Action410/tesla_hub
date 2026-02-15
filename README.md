@@ -1,6 +1,6 @@
-# Tesla Hub - E-commerce Web App
+# Genius Data Hub - E-commerce Web App
 
-A modern, mobile-first e-commerce platform inspired by Tesla's clean design aesthetic.
+A modern, mobile-first e-commerce platform focused on fast, secure, reliable digital services.
 
 ## Features
 
@@ -17,7 +17,7 @@ A modern, mobile-first e-commerce platform inspired by Tesla's clean design aest
 npm install
 ```
 
-2. Set up your Paystack public key:
+1. Set up your Paystack public key:
    - Open `app/checkout/page.tsx`
    - Find the comment `// TODO: Replace with your Paystack public key`
    - Replace `YOUR_PAYSTACK_PUBLIC_KEY` with your actual public key

@@ -76,28 +76,26 @@ export default function Logo({ className = '', size = 60 }: LogoProps) {
         strokeWidth="1.5"
       />
       
-      {/* Red Lightning Bolt across front face */}
+      {/* Brand mark */}
       <path
         d="M 32 40 L 38 48 L 35 48 L 40 56 L 47 48 L 38 48 Z"
         fill="#DC143C"
         stroke="#DC143C"
         strokeWidth="0.8"
       />
-      
-      {/* Text: Ts.⚡H */}
+
+      {/* Text: G (Genius) */}
       <text
         x="50"
         y="85"
         textAnchor="middle"
         fill="white"
-        fontSize="11"
+        fontSize="14"
         fontFamily="Arial, sans-serif"
         fontWeight="bold"
         letterSpacing="1"
       >
-        <tspan fill="white">Ts.</tspan>
-        <tspan fill="#DC143C">⚡</tspan>
-        <tspan fill="white">H</tspan>
+        <tspan fill="white">G</tspan>
       </text>
     </motion.svg>
   )

@@ -12,7 +12,7 @@ export default function Footer() {
     >
       <div className="container mx-auto px-4 text-center">
         <p className="text-sm md:text-base">
-          © Tesla Hub. All rights reserved.
+          © Genius Data Hub. All rights reserved.
         </p>
       </div>
     </motion.footer>
