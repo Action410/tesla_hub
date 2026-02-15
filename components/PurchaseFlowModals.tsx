@@ -20,16 +20,15 @@ export default function PurchaseFlowModals() {
     bundle,
     step,
     recipientNumber,
-    email,
     setRecipientNumber,
-    setEmail,
-    openPurchaseFlow: _open,
     closePurchaseFlow,
     goToConfirmation,
     goBackToSelection,
     goToPayment,
     resetAfterPayment,
   } = usePurchaseFlow()
+
+  const paystackEmail = process.env.NEXT_PUBLIC_STORE_EMAIL || 'receipt@geniusdatahub.com'
 
   const [isPaystackReady, setIsPaystackReady] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -68,7 +67,7 @@ export default function PurchaseFlowModals() {
 
     const handler = (window as any).PaystackPop.setup({
       key,
-      email,
+      email: paystackEmail,
       amount: amountInKobo,
       currency: 'GHS',
       ref,
@@ -85,7 +84,7 @@ export default function PurchaseFlowModals() {
         const orderPayload = {
           reference: response.reference,
           items: [{ id: bundle.id, name: bundle.title, price: bundle.price, quantity: 1, network: bundle.network }],
-          email,
+          email: paystackEmail,
           firstName: '',
           lastName: '',
           phone: recipientNumber,
@@ -125,9 +124,7 @@ export default function PurchaseFlowModals() {
         open={step === 'selection'}
         bundle={bundle}
         recipientNumber={recipientNumber}
-        email={email}
         onRecipientChange={setRecipientNumber}
-        onEmailChange={setEmail}
         onProceed={goToConfirmation}
         onClose={closePurchaseFlow}
       />
@@ -143,7 +140,6 @@ export default function PurchaseFlowModals() {
         open={step === 'payment'}
         bundle={bundle}
         recipientNumber={recipientNumber}
-        email={email}
         onClose={closePurchaseFlow}
         onSelectPaystack={openPayment}
         isPaystackLoading={!isPaystackReady}

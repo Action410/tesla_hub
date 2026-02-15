@@ -8,7 +8,6 @@ type Step = 'closed' | 'selection' | 'confirmation' | 'payment'
 interface PurchaseFlowState {
   bundle: Bundle | null
   recipientNumber: string
-  email: string
   step: Step
 }
 
@@ -16,7 +15,6 @@ interface PurchaseFlowContextType extends PurchaseFlowState {
   openPurchaseFlow: (bundle: Bundle) => void
   closePurchaseFlow: () => void
   setRecipientNumber: (value: string) => void
-  setEmail: (value: string) => void
   goToConfirmation: () => void
   goBackToSelection: () => void
   goToPayment: () => void
@@ -26,7 +24,6 @@ interface PurchaseFlowContextType extends PurchaseFlowState {
 const initialState: PurchaseFlowState = {
   bundle: null,
   recipientNumber: '',
-  email: '',
   step: 'closed',
 }
 
@@ -39,7 +36,6 @@ export function PurchaseFlowProvider({ children }: { children: React.ReactNode }
     setState({
       bundle,
       recipientNumber: '',
-      email: '',
       step: 'selection',
     })
   }, [])
@@ -50,10 +46,6 @@ export function PurchaseFlowProvider({ children }: { children: React.ReactNode }
 
   const setRecipientNumber = useCallback((value: string) => {
     setState((s) => ({ ...s, recipientNumber: value }))
-  }, [])
-
-  const setEmail = useCallback((value: string) => {
-    setState((s) => ({ ...s, email: value }))
   }, [])
 
   const goToConfirmation = useCallback(() => {
@@ -79,7 +71,6 @@ export function PurchaseFlowProvider({ children }: { children: React.ReactNode }
         openPurchaseFlow,
         closePurchaseFlow,
         setRecipientNumber,
-        setEmail,
         goToConfirmation,
         goBackToSelection,
         goToPayment,
