@@ -14,9 +14,10 @@ export interface CreateOrderBody {
   reference: string
   items: OrderItem[]
   email: string
-  firstName: string
-  lastName: string
+  firstName?: string
+  lastName?: string
   phone: string
+  recipient_number?: string
   address?: string
   city?: string
 }
@@ -72,15 +73,16 @@ async function callSupplierApi(
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as CreateOrderBody
-    const { reference, items, email, firstName, lastName, phone, address, city } = body
+    const { reference, items, email, firstName, lastName, phone, recipient_number, address, city } = body
     if (!reference || !items?.length || !email || !phone) {
       return NextResponse.json(
         { error: 'Missing required fields: reference, items, email, phone' },
         { status: 400 }
       )
     }
+    const recipientPhone = recipient_number || phone
 
-    const supplierResult = await callSupplierApi(items, phone)
+    const supplierResult = await callSupplierApi(items, recipientPhone)
     const status = supplierResult.success ? 'completed' : 'pending'
     const order = {
       reference,
@@ -89,6 +91,7 @@ export async function POST(request: NextRequest) {
       firstName,
       lastName,
       phone,
+      recipient_number: recipient_number ?? undefined,
       address,
       city,
       status,

@@ -1,6 +1,7 @@
 'use client'
 
 import { useCart } from '@/context/CartContext'
+import { usePurchaseFlow } from '@/context/PurchaseFlowContext'
 import type { Product } from '@/context/CartContext'
 import { motion } from 'framer-motion'
 
@@ -28,6 +29,7 @@ function formatSize(sizeMB?: number): string {
 
 export default function BundleCard({ bundle }: BundleCardProps) {
   const { addToCart } = useCart()
+  const { openPurchaseFlow } = usePurchaseFlow()
   const isAfa = bundle.network.toUpperCase() === 'AFA'
   const product: Product = {
     id: bundle.id,
@@ -77,18 +79,28 @@ export default function BundleCard({ bundle }: BundleCardProps) {
         {bundle.description && (
           <p className="text-sm text-gray-600 mb-4">{bundle.description}</p>
         )}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-200 gap-2">
           <p className="text-2xl font-bold text-genius-red">
             ₵{bundle.price.toFixed(2)}
           </p>
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => addToCart(product)}
-            className="px-4 py-2 rounded-lg bg-genius-red text-white font-semibold hover:bg-red-700 transition-colors duration-200"
-          >
-            Add to Cart
-          </motion.button>
+          <div className="flex gap-2">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => openPurchaseFlow(bundle)}
+              className="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-genius-red text-white font-semibold hover:bg-red-700 transition-colors duration-200"
+            >
+              Buy Now
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => addToCart(product)}
+              className="flex-1 sm:flex-none px-4 py-2 rounded-lg border-2 border-genius-red text-genius-red font-semibold hover:bg-genius-red/5 transition-colors duration-200"
+            >
+              Add to Cart
+            </motion.button>
+          </div>
         </div>
       </div>
     </motion.div>

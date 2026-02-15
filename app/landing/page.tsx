@@ -87,24 +87,13 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative h-[400px] md:h-[500px]"
               >
-                {/* TODO: Replace with your promotional banner image 1 */}
-                {/* Upload your image to public/banner-1.jpg and uncomment below */}
-                {/* <Image
-                  src="/banner-1.jpg"
-                  alt="Fast Delivery - Delivery Person"
+                <Image
+                  src="/banner-1.png"
+                  alt="Fast. Secure. Delivered. - Data Delivery"
                   fill
                   className="object-contain"
                   priority
-                /> */}
-                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
-                  <p className="text-white text-center px-4">
-                    Banner 1: Fast Delivery Now Ongoing
-                    <br />
-                    <span className="text-sm text-gray-400">
-                      Upload banner-1.jpg to public folder
-                    </span>
-                  </p>
-                </div>
+                />
               </motion.div>
             </div>
           </div>
@@ -162,23 +151,12 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative h-[400px] md:h-[500px]"
             >
-              {/* TODO: Replace with your promotional banner image 2 */}
-              {/* Upload your image to public/banner-2.jpg and uncomment below */}
-              {/* <Image
-                src="/banner-2.jpg"
-                alt="Fast & Reliable Delivery - Scooter"
+              <Image
+                src="/banner-2.png"
+                alt="Fast & Secure Data Delivery - Scooter"
                 fill
                 className="object-contain"
-              /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
-                <p className="text-white text-center px-4">
-                  Banner 2: Fast & Reliable Delivery
-                  <br />
-                  <span className="text-sm text-gray-400">
-                    Upload banner-2.jpg to public folder
-                  </span>
-                </p>
-              </div>
+              />
             </motion.div>
           </div>
         </div>
@@ -236,7 +214,7 @@ export default function LandingPage() {
               </Link>
             </motion.div>
 
-            {/* Right Side - Delivery Drivers Image */}
+            {/* Right Side - Fast & Reliable Delivery */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -244,23 +222,12 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative h-[500px] md:h-[600px]"
             >
-              {/* TODO: Replace with your promotional banner image 3 */}
-              {/* Upload your image to public/banner-3.jpg and uncomment below */}
-              {/* <Image
-                src="/banner-3.jpg"
-                alt="Fast Secure Delivered - Delivery Drivers"
+              <Image
+                src="/banner-3.png"
+                alt="Fast & Reliable Delivery 24/7 - Genius Hub"
                 fill
                 className="object-contain"
-              /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
-                <p className="text-white text-center px-4">
-                  Banner 3: Fast. Secure. Delivered.
-                  <br />
-                  <span className="text-sm text-gray-400">
-                    Upload banner-3.jpg to public folder
-                  </span>
-                </p>
-              </div>
+              />
             </motion.div>
           </div>
         </div>
@@ -296,7 +263,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Right Side - Airplane Image */}
+            {/* Right Side - Banner 4: Fast & Secure Data Delivery */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -304,23 +271,12 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative h-[400px] md:h-[500px]"
             >
-              {/* TODO: Replace with your promotional banner image 4 */}
-              {/* Upload your image to public/banner-4.jpg and uncomment below */}
-              {/* <Image
-                src="/banner-4.jpg"
-                alt="Global Delivery - Airplane"
+              <Image
+                src="/banner-4.png"
+                alt="Fast & Secure Data Delivery - Genius Hub"
                 fill
                 className="object-contain"
-              /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
-                <p className="text-white text-center px-4">
-                  Banner 4: Global Delivery
-                  <br />
-                  <span className="text-sm text-gray-400">
-                    Upload banner-4.jpg to public folder
-                  </span>
-                </p>
-              </div>
+              />
             </motion.div>
           </div>
         </div>

@@ -25,7 +25,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: 'Store', href: '/', icon: '🛍️' },
     { name: 'Cart', href: '/cart', icon: '🛒', badge: getTotalItems() },
     { name: 'Transactions', href: '/dashboard/transactions', icon: '💳' },
-    { name: 'Admin', href: '/dashboard/admin', icon: '📋' },
+    { name: 'Agent', href: '/dashboard/agent', icon: '👤' },
     { name: 'Settings', href: '/dashboard/settings', icon: '⚙️' },
   ]
 

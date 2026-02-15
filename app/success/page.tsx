@@ -8,6 +8,11 @@ import { Suspense } from 'react'
 function SuccessContent() {
   const searchParams = useSearchParams()
   const reference = searchParams.get('reference')
+  const recipient = searchParams.get('recipient')
+  const bundleName = searchParams.get('bundleName')
+  const bundleSize = searchParams.get('bundleSize')
+  const amount = searchParams.get('amount')
+  const isDataOrder = Boolean(recipient || bundleName || amount)
 
   return (
     <div className="min-h-screen bg-white py-12 md:py-20">
@@ -48,15 +53,52 @@ function SuccessContent() {
             Payment Successful – Order Received
           </motion.h1>
 
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-gray-600 mb-4"
-          >
-            Thank you for your purchase! Your order has been received and will be
-            processed shortly.
-          </motion.p>
+          {isDataOrder ? (
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg font-semibold text-green-700 mb-6"
+            >
+              Your data has been successfully processed.
+            </motion.p>
+          ) : (
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg text-gray-600 mb-4"
+            >
+              Thank you for your purchase! Your order has been received and will be
+              processed shortly.
+            </motion.p>
+          )}
+
+          {isDataOrder && (recipient || bundleName || bundleSize || amount) && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.45 }}
+              className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-6 text-left"
+            >
+              <p className="text-sm text-gray-600 mb-1">
+                <span className="font-semibold text-black">Recipient number:</span>{' '}
+                <span className="font-bold text-genius-red">{recipient || '—'}</span>
+              </p>
+              {bundleName && (
+                <p className="text-sm text-gray-600 mb-1">
+                  <span className="font-semibold text-black">Bundle:</span> {bundleName}
+                  {bundleSize && ` (${bundleSize})`}
+                </p>
+              )}
+              {amount && (
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-black">Amount paid:</span>{' '}
+                  <span className="font-bold text-genius-red">GHS {amount}</span>
+                </p>
+              )}
+            </motion.div>
+          )}
 
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -75,7 +117,7 @@ function SuccessContent() {
               className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8"
             >
               <p className="text-sm text-gray-600">
-                <span className="font-semibold">Transaction Reference:</span>{' '}
+                <span className="font-semibold">Order reference:</span>{' '}
                 {reference}
               </p>
             </motion.div>
