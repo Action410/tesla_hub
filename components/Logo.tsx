@@ -11,11 +11,10 @@ export default function Logo({ className = '', size = 60 }: LogoProps) {
   return (
     <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.15 }} className={className}>
       <img
-        src="/assets/genius-data-hub-logo.svg"
+        src="/assets/genius-data-hub-logo.png"
         alt="Genius Data Hub"
         width={size}
-        height={Math.round((size * 120) / 400)}
-        style={{ display: 'block', width: size, height: 'auto' }}
+        style={{ display: 'block', width: size, height: 'auto', objectFit: 'contain' }}
       />
     </motion.div>
   )

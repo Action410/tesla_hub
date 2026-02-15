@@ -49,7 +49,7 @@ export default function SettingsPage() {
         {/* Profile Picture Upload */}
         <div className="flex items-center space-x-6 mb-6">
           <div className="relative">
-            <div className="w-24 h-24 rounded-full bg-tesla-red flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+            <div className="w-24 h-24 rounded-full bg-genius-red flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
               {profileImage ? (
                 <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
               ) : (
@@ -58,7 +58,7 @@ export default function SettingsPage() {
             </div>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="absolute bottom-0 right-0 w-8 h-8 bg-tesla-red rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors"
+              className="absolute bottom-0 right-0 w-8 h-8 bg-genius-red rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors"
               title="Upload profile picture"
             >
               📷
@@ -93,7 +93,7 @@ export default function SettingsPage() {
               placeholder="Enter your full name"
               value={profileData.name}
               onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-tesla-red"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-genius-red"
             />
           </div>
 
@@ -106,7 +106,7 @@ export default function SettingsPage() {
               placeholder="Enter your email address"
               value={profileData.email}
               onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-tesla-red"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-genius-red"
             />
           </div>
 
@@ -119,13 +119,13 @@ export default function SettingsPage() {
               placeholder="Enter your phone number"
               value={profileData.phone}
               onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-tesla-red"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-genius-red"
             />
           </div>
 
           <button
             onClick={handleSaveProfile}
-            className="bg-tesla-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+            className="bg-genius-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
           >
             Save Profile
           </button>
@@ -157,7 +157,7 @@ export default function SettingsPage() {
               onClick={() => setTheme('light')}
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 theme === 'light'
-                  ? 'bg-tesla-red text-white'
+                  ? 'bg-genius-red text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
               }`}
             >
@@ -167,7 +167,7 @@ export default function SettingsPage() {
               onClick={() => setTheme('dark')}
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 theme === 'dark'
-                  ? 'bg-tesla-red text-white'
+                  ? 'bg-genius-red text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
               }`}
             >
@@ -182,7 +182,7 @@ export default function SettingsPage() {
               type="checkbox"
               checked={theme === 'dark'}
               onChange={toggleTheme}
-              className="w-5 h-5 text-tesla-red rounded focus:ring-tesla-red"
+              className="w-5 h-5 text-genius-red rounded focus:ring-genius-red"
             />
             <span className="text-gray-700 dark:text-gray-300">
               Use dark mode

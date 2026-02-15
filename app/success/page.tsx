@@ -52,10 +52,19 @@ function SuccessContent() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-lg text-gray-600 mb-8"
+            className="text-lg text-gray-600 mb-4"
           >
             Thank you for your purchase! Your order has been received and will be
             processed shortly.
+          </motion.p>
+
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.45 }}
+            className="text-base font-semibold text-green-700 mb-8"
+          >
+            No Expiry – your data bundles never expire.
           </motion.p>
 
           {reference && (

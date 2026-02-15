@@ -8,6 +8,11 @@ export interface Product {
   price: number
   image: string
   description?: string
+  network?: string
+  badge?: string
+  expires?: boolean
+  expiry_note?: string
+  sizeMB?: number
 }
 
 export interface CartItem extends Product {

@@ -15,19 +15,19 @@ export default function LandingPage() {
             <Link href="/" className="flex items-center space-x-3">
               <Logo size={45} />
               <span className="text-2xl md:text-3xl font-bold text-white">
-                Tesla Hub
+                Genius Data Hub
               </span>
             </Link>
             <div className="flex items-center space-x-4 md:space-x-6">
               <Link
                 href="/dashboard"
-                className="text-white hover:text-tesla-red transition-colors duration-200"
+                className="text-white hover:text-genius-red transition-colors duration-200"
               >
                 Sign In
               </Link>
               <Link
                 href="/dashboard"
-                className="bg-tesla-red text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
+                className="bg-genius-red text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
               >
                 Get Started
               </Link>
@@ -41,9 +41,9 @@ export default function LandingPage() {
         {/* Background with diagonal split - black left, red/white right */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black w-1/2"></div>
-          <div className="absolute inset-0 right-0 w-1/2 bg-gradient-to-br from-tesla-red via-red-600 to-white"></div>
+          <div className="absolute inset-0 right-0 w-1/2 bg-gradient-to-br from-genius-red via-red-600 to-white"></div>
           {/* Confetti effect - using gradient instead of inline styles */}
-          <div className="absolute inset-0 opacity-30 bg-gradient-to-br from-white via-transparent to-tesla-red"></div>
+          <div className="absolute inset-0 opacity-30 bg-gradient-to-br from-white via-transparent to-genius-red"></div>
         </div>
 
         {/* Content Overlay */}
@@ -58,7 +58,7 @@ export default function LandingPage() {
                 className="text-white space-y-6"
               >
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                  <span className="text-tesla-red">FAST</span>{' '}
+                  <span className="text-genius-red">FAST</span>{' '}
                   <span className="text-white">DELIVERY</span>
                 </h1>
                 <h2 className="text-3xl md:text-5xl font-bold text-white">
@@ -66,15 +66,15 @@ export default function LandingPage() {
                 </h2>
                 <div className="space-y-3 text-xl md:text-2xl">
                   <p className="flex items-center">
-                    <span className="text-tesla-red mr-3">•</span> RELIABLE
+                    <span className="text-genius-red mr-3">•</span> RELIABLE
                   </p>
                   <p className="flex items-center">
-                    <span className="text-tesla-red mr-3">•</span> RESPONSIVE
+                    <span className="text-genius-red mr-3">•</span> RESPONSIVE
                   </p>
                 </div>
                 <Link
                   href="/dashboard"
-                  className="inline-block bg-tesla-red text-white px-8 py-4 rounded-lg font-bold text-lg md:text-xl hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
+                  className="inline-block bg-genius-red text-white px-8 py-4 rounded-lg font-bold text-lg md:text-xl hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
                 >
                   ORDER NOW
                 </Link>
@@ -96,7 +96,7 @@ export default function LandingPage() {
                   className="object-contain"
                   priority
                 /> */}
-                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-tesla-red">
+                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
                   <p className="text-white text-center px-4">
                     Banner 1: Fast Delivery Now Ongoing
                     <br />
@@ -130,25 +130,25 @@ export default function LandingPage() {
             >
               <h2 className="text-4xl md:text-6xl font-bold">
                 <span className="text-white">FAST &</span>{' '}
-                <span className="text-tesla-red">RELIABLE</span>
+                <span className="text-genius-red">RELIABLE</span>
               </h2>
-              <h3 className="text-5xl md:text-7xl font-bold text-tesla-red">
+              <h3 className="text-5xl md:text-7xl font-bold text-genius-red">
                 DELIVERY
               </h3>
               <div className="space-y-3 text-lg md:text-xl">
                 <p className="flex items-center">
-                  <span className="text-tesla-red mr-3">•</span> QUALITY PRODUCTS
+                  <span className="text-genius-red mr-3">•</span> QUALITY PRODUCTS
                 </p>
                 <p className="flex items-center">
-                  <span className="text-tesla-red mr-3">•</span> 24/7 SERVICE
+                  <span className="text-genius-red mr-3">•</span> 24/7 SERVICE
                 </p>
                 <p className="flex items-center">
-                  <span className="text-tesla-red mr-3">•</span> DIRECT TO YOUR DOOR
+                  <span className="text-genius-red mr-3">•</span> DIRECT TO YOUR DOOR
                 </p>
               </div>
               <Link
                 href="/dashboard"
-                className="inline-block bg-tesla-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
+                className="inline-block bg-genius-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
               >
                 ORDER NOW
               </Link>
@@ -170,7 +170,7 @@ export default function LandingPage() {
                 fill
                 className="object-contain"
               /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-tesla-red">
+              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
                 <p className="text-white text-center px-4">
                   Banner 2: Fast & Reliable Delivery
                   <br />
@@ -189,7 +189,7 @@ export default function LandingPage() {
         {/* Background with wave effect */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-1/2 bg-white"></div>
-          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-br from-black via-gray-900 to-tesla-red"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-br from-black via-gray-900 to-genius-red"></div>
           {/* Wave separator */}
           <svg
             className="absolute bottom-1/2 left-0 w-full h-24"
@@ -215,13 +215,13 @@ export default function LandingPage() {
             >
               <h1 className="text-6xl md:text-8xl font-bold leading-tight">
                 <span className="text-black">FAST</span>
-                <span className="text-tesla-red">.</span>
+                <span className="text-genius-red">.</span>
                 <br />
-                <span className="text-tesla-red">SECURE</span>
+                <span className="text-genius-red">SECURE</span>
                 <span className="text-black">.</span>
                 <br />
                 <span className="text-black">DELIVERED</span>
-                <span className="text-tesla-red">.</span>
+                <span className="text-genius-red">.</span>
               </h1>
               <div className="flex items-center space-x-4 mt-8">
                 <div className="bg-black text-white px-6 py-3 rounded-full font-bold">
@@ -230,7 +230,7 @@ export default function LandingPage() {
               </div>
               <Link
                 href="/dashboard"
-                className="inline-block bg-tesla-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
+                className="inline-block bg-genius-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-xl mt-6"
               >
                 ORDER NOW
               </Link>
@@ -252,7 +252,7 @@ export default function LandingPage() {
                 fill
                 className="object-contain"
               /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-tesla-red">
+              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
                 <p className="text-white text-center px-4">
                   Banner 3: Fast. Secure. Delivered.
                   <br />
@@ -281,17 +281,17 @@ export default function LandingPage() {
               <h2 className="text-4xl md:text-6xl font-bold text-black">
                 Delivering to Customers
               </h2>
-              <h3 className="text-5xl md:text-7xl font-bold text-tesla-red">
+              <h3 className="text-5xl md:text-7xl font-bold text-genius-red">
                 Across the Globe
               </h3>
-              <div className="bg-tesla-red text-white px-6 py-3 rounded-lg inline-block">
+              <div className="bg-genius-red text-white px-6 py-3 rounded-lg inline-block">
                 <p className="text-xl font-bold">At Affordable Prices</p>
               </div>
               <div className="mt-8">
                 <p className="text-3xl md:text-4xl font-bold">
                   <span className="text-white bg-black px-4 py-2 rounded">FAST.</span>{' '}
                   <span className="text-white bg-black px-4 py-2 rounded">SECURE.</span>{' '}
-                  <span className="text-tesla-red bg-black px-4 py-2 rounded">DELIVERED.</span>
+                  <span className="text-genius-red bg-black px-4 py-2 rounded">DELIVERED.</span>
                 </p>
               </div>
             </motion.div>
@@ -312,7 +312,7 @@ export default function LandingPage() {
                 fill
                 className="object-contain"
               /> */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-tesla-red">
+              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg flex items-center justify-center border-4 border-genius-red">
                 <p className="text-white text-center px-4">
                   Banner 4: Global Delivery
                   <br />
@@ -336,7 +336,7 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-center mb-12"
           >
-            Our <span className="text-tesla-red">Services</span>
+            Our <span className="text-genius-red">Services</span>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -367,7 +367,7 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow-lg border-2 border-gray-200 hover:border-tesla-red transition-all duration-300"
+                className="bg-white p-6 rounded-lg shadow-lg border-2 border-gray-200 hover:border-genius-red transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{feature.icon}</div>
                 <h3 className="text-2xl font-bold text-black mb-3">{feature.title}</h3>
@@ -388,7 +388,7 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-center mb-12"
           >
-            How It <span className="text-tesla-red">Works</span>
+            How It <span className="text-genius-red">Works</span>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
@@ -405,7 +405,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-tesla-red rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                <div className="w-20 h-20 bg-genius-red rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
@@ -417,7 +417,7 @@ export default function LandingPage() {
       </section>
 
       {/* Call To Action Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-tesla-red to-red-700 text-white">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-genius-red to-red-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -433,7 +433,7 @@ export default function LandingPage() {
             </p>
             <Link
               href="/dashboard"
-              className="inline-block bg-white text-tesla-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+              className="inline-block bg-white text-genius-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
             >
               Go to Dashboard
             </Link>
@@ -448,7 +448,7 @@ export default function LandingPage() {
             <Logo size={60} />
           </div>
           <p className="text-sm md:text-base">
-            © Tesla Hub. All rights reserved.
+            © Genius Data Hub. All rights reserved.
           </p>
         </div>
       </footer>

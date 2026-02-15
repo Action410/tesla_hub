@@ -36,7 +36,7 @@ export default function CartPage() {
             </p>
             <Link
               href="/"
-              className="inline-block bg-tesla-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-lg"
+              className="inline-block bg-genius-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-200 shadow-lg"
             >
               ORDER NOW
             </Link>
@@ -59,7 +59,7 @@ export default function CartPage() {
             </h1>
             <button
               onClick={handleClearCart}
-              className="text-gray-600 hover:text-tesla-red transition-colors duration-200 text-sm md:text-base"
+              className="text-gray-600 hover:text-genius-red transition-colors duration-200 text-sm md:text-base"
             >
               Clear Cart
             </button>
@@ -83,7 +83,7 @@ export default function CartPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white border-2 border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 shadow-sm hover:shadow-md hover:border-tesla-red transition-all duration-300"
+                  className="bg-white border-2 border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 shadow-sm hover:shadow-md hover:border-genius-red transition-all duration-300"
                 >
                   <div className={`relative w-full md:w-24 h-32 md:h-24 ${getProviderColor(item.name)} rounded-lg flex-shrink-0 flex items-center justify-center`}>
                     <div className="text-center text-white">
@@ -95,7 +95,10 @@ export default function CartPage() {
                     <h3 className="text-lg md:text-xl font-semibold text-black mb-2">
                       {item.name}
                     </h3>
-                    <p className="text-lg font-bold text-tesla-red mb-4">
+                    {(item.expiry_note ?? 'No Expiry') && (
+                      <p className="text-xs text-gray-500 mb-1">{item.expiry_note ?? 'No Expiry'}</p>
+                    )}
+                    <p className="text-lg font-bold text-genius-red mb-4">
                       ₵{item.price.toFixed(2)}
                     </p>
                     <div className="flex items-center justify-between">
@@ -156,7 +159,7 @@ export default function CartPage() {
                   <div className="border-t border-gray-300 pt-4">
                     <div className="flex justify-between text-xl font-bold text-black">
                       <span>Total</span>
-                      <span className="text-tesla-red">
+                      <span className="text-genius-red">
                         ₵{getTotalPrice().toFixed(2)}
                       </span>
                     </div>
@@ -164,7 +167,7 @@ export default function CartPage() {
                 </div>
                 <Link
                   href="/checkout"
-                  className="block w-full bg-tesla-red text-white text-center py-4 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
+                  className="block w-full bg-genius-red text-white text-center py-4 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
                 >
                   Proceed to Checkout
                 </Link>

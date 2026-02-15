@@ -22,9 +22,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const menuItems = [
     { name: 'Dashboard', href: '/dashboard', icon: '🏠' },
     { name: 'Orders', href: '/dashboard/orders', icon: '📦', badge: null },
-    { name: 'Store', href: '/dashboard', icon: '🛍️' },
+    { name: 'Store', href: '/', icon: '🛍️' },
     { name: 'Cart', href: '/cart', icon: '🛒', badge: getTotalItems() },
     { name: 'Transactions', href: '/dashboard/transactions', icon: '💳' },
+    { name: 'Admin', href: '/dashboard/admin', icon: '📋' },
     { name: 'Settings', href: '/dashboard/settings', icon: '⚙️' },
   ]
 
@@ -70,11 +71,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   >
                     <span className="text-xl">{item.icon}</span>
                     <span className="font-medium">{item.name}</span>
-                      {item.badge !== null && item.badge > 0 && (
-                      <span className="ml-auto bg-genius-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                        {item.badge}
-                      </span>
-                    )}
+                      {typeof item.badge === 'number' && item.badge > 0 && (
+                        <span className="ml-auto bg-genius-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                          {item.badge}
+                        </span>
+                      )}
                   </Link>
                 </li>
               ))}

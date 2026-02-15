@@ -110,7 +110,7 @@ export default function DashboardPage() {
         className="bg-gradient-to-r from-black via-gray-900 to-black text-white p-6 md:p-8 rounded-lg"
       >
         <h1 className="text-3xl md:text-4xl font-bold mb-2">
-          Welcome to <span className="text-tesla-red">Tesla Hub</span>
+          Welcome to <span className="text-genius-red">Genius Data Hub</span>
         </h1>
         <p className="text-lg text-gray-300">
           Fast. Secure. Delivered.
@@ -152,7 +152,7 @@ export default function DashboardPage() {
             <input
               type="text"
               placeholder="Search packages..."
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-tesla-red"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-genius-red"
             />
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
               key={network}
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 network === 'All Networks'
-                  ? 'bg-tesla-red text-white'
+                  ? 'bg-genius-red text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >

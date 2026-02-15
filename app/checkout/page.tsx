@@ -20,10 +20,8 @@ export default function CheckoutPage() {
   const [isPaystackReady, setIsPaystackReady] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
 
-  // TODO: Replace with your Paystack public key
-  // Get your public key from: https://dashboard.paystack.com/#/settings/developer
-  // Example: const PAYSTACK_PUBLIC_KEY = 'pk_live_xxxxxxxxxxxxxxxxxxxxx';
-  const PAYSTACK_PUBLIC_KEY = 'YOUR_PAYSTACK_PUBLIC_KEY'
+  const PAYSTACK_PUBLIC_KEY =
+    process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || ''
 
   // Load Paystack Inline script on the client only
   useEffect(() => {
@@ -71,9 +69,9 @@ export default function CheckoutPage() {
   const payWithPaystack = () => {
     if (typeof window === 'undefined') return
 
-    if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
+    if (!PAYSTACK_PUBLIC_KEY) {
       alert(
-        'Please configure your Paystack public key in app/checkout/page.tsx before accepting live payments.'
+        'Please set NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY in your environment to accept payments.'
       )
       return
     }
@@ -83,53 +81,56 @@ export default function CheckoutPage() {
       return
     }
 
-    const amountInKobo = Math.round(getTotalPrice() * 100) // Paystack expects amount in the smallest currency unit
+    const amountInKobo = Math.round(getTotalPrice() * 100)
+    const ref = new Date().getTime().toString()
 
     const handler = (window as any).PaystackPop.setup({
       key: PAYSTACK_PUBLIC_KEY,
       email: formData.email,
       amount: amountInKobo,
-      currency: 'GHS', // Ghana Cedis
-      ref: new Date().getTime().toString(),
+      currency: 'GHS',
+      ref,
       metadata: {
         custom_fields: [
-          {
-            display_name: 'First Name',
-            variable_name: 'first_name',
-            value: formData.firstName,
-          },
-          {
-            display_name: 'Last Name',
-            variable_name: 'last_name',
-            value: formData.lastName,
-          },
-          {
-            display_name: 'Phone',
-            variable_name: 'phone',
-            value: formData.phone,
-          },
-          {
-            display_name: 'Address',
-            variable_name: 'address',
-            value: formData.address,
-          },
-          {
-            display_name: 'City',
-            variable_name: 'city',
-            value: formData.city,
-          },
+          { display_name: 'First Name', variable_name: 'first_name', value: formData.firstName },
+          { display_name: 'Last Name', variable_name: 'last_name', value: formData.lastName },
+          { display_name: 'Phone', variable_name: 'phone', value: formData.phone },
+          { display_name: 'Address', variable_name: 'address', value: formData.address },
+          { display_name: 'City', variable_name: 'city', value: formData.city },
         ],
       },
-      callback: (response: { reference: string }) => {
+      callback: async (response: { reference: string }) => {
+        const orderPayload = {
+          reference: response.reference,
+          items: cart.map((item) => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            network: item.network,
+          })),
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+        }
+        try {
+          await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderPayload),
+          })
+        } catch (err) {
+          console.error('Order API error:', err)
+        }
         setIsProcessing(false)
-        // Clear cart after successful payment
         clearCart()
-        // Redirect to success page with reference
         router.push(`/success?reference=${response.reference}`)
       },
       onClose: () => {
         setIsProcessing(false)
-        console.log('Payment modal closed')
       },
     })
 
@@ -166,7 +167,7 @@ export default function CheckoutPage() {
             </p>
             <a
               href="/"
-              className="inline-block bg-tesla-red text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
+              className="inline-block bg-genius-red text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200"
             >
               Continue Shopping
             </a>
@@ -205,7 +206,7 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="your@email.com"
@@ -230,7 +231,7 @@ export default function CheckoutPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, firstName: e.target.value })
                       }
-                      className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                      className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                         errors.firstName ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="John"
@@ -256,7 +257,7 @@ export default function CheckoutPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, lastName: e.target.value })
                       }
-                      className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                      className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                         errors.lastName ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="Doe"
@@ -283,7 +284,7 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                       errors.phone ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="+233 XX XXX XXXX"
@@ -307,7 +308,7 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, address: e.target.value })
                     }
-                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                       errors.address ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Street address"
@@ -333,7 +334,7 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, city: e.target.value })
                     }
-                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-tesla-red ${
+                    className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-genius-red ${
                       errors.city ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Accra"
@@ -345,7 +346,7 @@ export default function CheckoutPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-tesla-red text-white py-4 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200 text-lg"
+                  className="w-full bg-genius-red text-white py-4 rounded-md font-semibold hover:bg-red-700 transition-colors duration-200 text-lg"
                 >
                   Pay ₵{getTotalPrice().toFixed(2)}
                 </button>
@@ -375,7 +376,7 @@ export default function CheckoutPage() {
                   <div className="border-t border-gray-300 pt-4">
                     <div className="flex justify-between text-xl font-bold text-black">
                       <span>Total</span>
-                      <span className="text-tesla-red">
+                      <span className="text-genius-red">
                         ₵{getTotalPrice().toFixed(2)}
                       </span>
                     </div>

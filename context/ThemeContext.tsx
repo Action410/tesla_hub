@@ -14,32 +14,36 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('light')
-  const [mounted, setMounted] = useState(false)
 
+  // On client mount, read saved theme and apply
   useEffect(() => {
-    setMounted(true)
     // Load theme from localStorage
-    const savedTheme = localStorage.getItem('genius-data-hub-theme') as Theme | null
-    if (savedTheme) {
-      setThemeState(savedTheme)
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setThemeState(prefersDark ? 'dark' : 'light')
+    try {
+      const savedTheme = localStorage.getItem('genius-data-hub-theme') as Theme | null
+      if (savedTheme) {
+        setThemeState(savedTheme)
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        setThemeState(prefersDark ? 'dark' : 'light')
+      }
+    } catch (err) {
+      // ignore (e.g., SSR)
     }
   }, [])
 
   useEffect(() => {
-    if (!mounted) return
-    // Apply theme to document
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+    // Apply theme to document and persist on client
+    try {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+      localStorage.setItem('genius-data-hub-theme', theme)
+    } catch (err) {
+      // ignore on server
     }
-    // Save to localStorage
-    localStorage.setItem('genius-data-hub-theme', theme)
-  }, [theme, mounted])
+  }, [theme])
 
   const toggleTheme = () => {
     setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'))
@@ -47,10 +51,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
-  }
-
-  if (!mounted) {
-    return <>{children}</>
   }
 
   return (

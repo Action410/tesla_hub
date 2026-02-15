@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'genius-red': '#DC143C',
+        'genius-red': '#e31b23',
         'genius-black': '#000000',
         'genius-white': '#FFFFFF',
       },

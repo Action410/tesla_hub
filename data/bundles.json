@@ -1,0 +1,155 @@
+[
+  {
+    "id": "mtn_1gb",
+    "network": "MTN",
+    "title": "1GB MTN",
+    "sizeMB": 1024,
+    "price": 5.0,
+    "badge": "BEST SELLING",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "1GB data bundle"
+  },
+  {
+    "id": "mtn_2gb",
+    "network": "MTN",
+    "title": "2GB MTN",
+    "sizeMB": 2048,
+    "price": 10.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "2GB data bundle"
+  },
+  {
+    "id": "mtn_5gb",
+    "network": "MTN",
+    "title": "5GB MTN",
+    "sizeMB": 5120,
+    "price": 20.0,
+    "badge": "BEST SELLING",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "5GB data bundle"
+  },
+  {
+    "id": "mtn_10gb",
+    "network": "MTN",
+    "title": "10GB MTN",
+    "sizeMB": 10240,
+    "price": 35.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "10GB data bundle"
+  },
+  {
+    "id": "telecel_1gb",
+    "network": "Telecel",
+    "title": "1GB Telecel",
+    "sizeMB": 1024,
+    "price": 5.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "1GB data bundle"
+  },
+  {
+    "id": "telecel_2gb",
+    "network": "Telecel",
+    "title": "2GB Telecel",
+    "sizeMB": 2048,
+    "price": 10.0,
+    "badge": "BEST SELLING",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "2GB data bundle"
+  },
+  {
+    "id": "telecel_5gb",
+    "network": "Telecel",
+    "title": "5GB Telecel",
+    "sizeMB": 5120,
+    "price": 20.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "5GB data bundle"
+  },
+  {
+    "id": "at_1gb",
+    "network": "AT",
+    "title": "1GB AirtelTigo",
+    "sizeMB": 1024,
+    "price": 5.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "1GB data bundle"
+  },
+  {
+    "id": "at_2gb",
+    "network": "AT",
+    "title": "2GB AirtelTigo",
+    "sizeMB": 2048,
+    "price": 10.0,
+    "badge": "BEST SELLING",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "2GB data bundle"
+  },
+  {
+    "id": "at_5gb",
+    "network": "AT",
+    "title": "5GB AirtelTigo",
+    "sizeMB": 5120,
+    "price": 20.0,
+    "badge": "FAST DELIVERY",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "5GB data bundle"
+  },
+  {
+    "id": "afa_reg",
+    "network": "AFA",
+    "title": "AFA Registration Bundle",
+    "price": 2.0,
+    "badge": "AFA",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "AFA registration bundle"
+  },
+  {
+    "id": "afa_1gb",
+    "network": "AFA",
+    "title": "1GB AFA Bundle",
+    "sizeMB": 1024,
+    "price": 4.5,
+    "badge": "AFA",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "1GB AFA data bundle"
+  },
+  {
+    "id": "afa_2gb",
+    "network": "AFA",
+    "title": "2GB AFA Bundle",
+    "sizeMB": 2048,
+    "price": 9.0,
+    "badge": "AFA",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "2GB AFA data bundle"
+  },
+  {
+    "id": "afa_5gb",
+    "network": "AFA",
+    "title": "5GB AFA Bundle",
+    "sizeMB": 5120,
+    "price": 18.0,
+    "badge": "AFA",
+    "expires": false,
+    "expiry_note": "No expiry",
+    "description": "5GB AFA data bundle"
+  }
+]
